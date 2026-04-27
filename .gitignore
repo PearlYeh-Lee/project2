@@ -1,0 +1,41 @@
+# Logs
+logs
+*.log
+
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Environment Variables
+.env
+.env.local
+
+# Production builds
+client/dist/
+
+
+# Root level ignores
+node_modules/
+.env
+
+# Backend specific
+server/node_modules/
+server/.env
+
+# Frontend specific
+client/node_modules/
+client/dist/
+client/.env.local
+
+# Production builds
+client/build/
+dist/
+
+# System files
+.DS_Store
+
+# Any time you want to update and save your work, you should run the three lines in the root folder of your project. You should do this at least every day.
+# git add .
+# git commit -m "YOUR MESSAGE HERE"
+# git push
