@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import axios from 'axios' // Make sure you've run: npm install axios
 
 
-
 function Submit({newName, newAge, newBreed, name, age, breed, clickInputHandler}){
   function newNameSetter (event){
     newName(event.target.value)
@@ -22,19 +21,33 @@ function Submit({newName, newAge, newBreed, name, age, breed, clickInputHandler}
     </>
     )
   }
-function Display(name){
-  return(
-    <>
-    <div> {name} </div>
-    </>
-  )
-}
+// function Display(chickenListProp){
+//   return(
+//     <>
+//     <div> {chickenListProp.map
+//     (chicken =>
+//     <li key={chicken}> {chicken} </li>
+//     )
+//       } </div>
+//     </>
+//   )
+// }
 function App() {
+  // Mapping:https://www.w3schools.com/react/react_es6_array_map.asp
   const [inputName, setInputName]=useState("Name")
   const [inputAge, setInputAge]=useState("Age")
   const [inputBreed, setInputBreed]=useState("Breed")
+  const [chickenList, setChickenList]=useState([{id: 0, name: 'Chippy', age: 6},{id:1, name: 'Buffy', age: 6}])
+  
   function onClickSubmit(){
     console.log(inputName, inputAge, inputBreed)
+    newChickenAdder(inputName, inputAge)
+    
+  }
+  function newChickenAdder(inputName, inputAge){
+    const currentChickenList = [...chickenList]
+    currentChickenList.push({id: currentChickenList.length, name: inputName, age: inputAge})
+    setChickenList(currentChickenList)
   }
   function newNameListener (value){
     setInputName(value)
@@ -48,7 +61,11 @@ function App() {
   return (
     <>
     <Submit newName={newNameListener} newAge={newAgeListener} newBreed={newBreedListener} name={inputName} age={inputAge} breed={inputBreed} clickInputHandler={()=> onClickSubmit()}/>
-    <Display name={inputName}></Display>
+    {/* <Display chickenListProp={chickenList}></Display> */}
+    <div> {chickenList.map (chicken =>
+    <li key={chicken.id}> {chicken.name} {chicken.age} </li>
+    )
+      } </div>
     </>
   )
 }
