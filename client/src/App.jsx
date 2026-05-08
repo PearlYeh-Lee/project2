@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios' // Make sure you've run: npm install axios
-
+import axios from 'axios'
 
 function Submit({newName, newAge, newBreed, name, age, breed, clickInputHandler}){
   function newNameSetter (event){

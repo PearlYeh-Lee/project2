@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const chickenModel = require('./schema/Chicken')
 const cors = require('cors');
+// using .env to connect to mongo db
 require('dotenv').config();
 
 const app = express();
@@ -10,7 +12,11 @@ app.use(cors());
 app.use(express.json());
 
 // The "Hello World" Route
-app.get('/api/hello', (req, res) => {
+app.get('/api/chickens', (req, res) => {
+  chickenModel.find({}).then(data=>{
+    console.log(data)
+    // res.send(data)
+  })
   res.json({ message: "Hello from the MERN Server!" });
 });
 
