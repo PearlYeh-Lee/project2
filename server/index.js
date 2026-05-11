@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const chickenModel = require('./schema/Chicken')
+const ChickenModel = require('./models/ChickenModel')
 const cors = require('cors');
 // using .env to connect to mongo db
 require('dotenv').config();
@@ -11,13 +11,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// The "Hello World" Route
-app.get('/api/chickens', (req, res) => {
-  chickenModel.find({}).then(data=>{
-    console.log(data)
-    // res.send(data)
-  })
-  res.json({ message: "Hello from the MERN Server!" });
+storedChickens=[]
+// Problem: two servers running but not connection
+app.get('/api/storedChickens', async (req, res) => {
+  try {
+    const storedChickens = await ChickenModel.find(); 
+    res.status(200).json(storedChickens);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 // Database Connection

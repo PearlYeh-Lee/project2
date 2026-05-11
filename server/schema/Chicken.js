@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // create a schema
-const chickenSchema = new Schema({
+const ChickenSchema = new Schema({
 	// Simple declaration of datatype that will be used:
     id: Number,
 	name: String,
@@ -18,5 +18,5 @@ const chickenSchema = new Schema({
 // "ModelNameSingular" will automatically be pluralized for you,
 //and that pluralized version of the model name will also
 //become the name of the MongoDB collection.
-
-module.exports = mongoose.model("Chicken", chickenSchema);
+// Chicken is a collection in the MyMernApp database
+module.exports = mongoose.model("ChickenModel", ChickenSchema);
