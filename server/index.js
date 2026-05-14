@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const ChickenModel = require('./models/ChickenModel')
+const ChickenModel = require('./schema/Chicken')
 const cors = require('cors');
 // using .env to connect to mongo db
 require('dotenv').config();
@@ -11,16 +11,34 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-storedChickens=[]
-// Problem: two servers running but not connection
+storedChickens=[{
+    id: 0,
+    name: 'Chippy',
+    age: 6,
+    breed: 'Easter Egger'
+  }]
+
 app.get('/api/storedChickens', async (req, res) => {
+  console.log("doing a get")
   try {
-    const storedChickens = await ChickenModel.find(); 
-    res.status(200).json(storedChickens);
+      ChickenModel.find({}).then((data) => {
+        console.log(data)
+      res.send(data);
+    })
+    
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
+
+// app.get('/api/storedPigs', async (req, res) => {
+//   try {
+//     const storedChickens = await ChickenModel.find(); 
+//     res.status(200).json(storedChickens);
+//   } catch (err) {
+//     res.status(500).json({ error: err.message });
+//   }
+// });
 
 // Database Connection
 const PORT = process.env.PORT || 5000;

@@ -19,4 +19,4 @@ const ChickenSchema = new Schema({
 //and that pluralized version of the model name will also
 //become the name of the MongoDB collection.
 // Chicken is a collection in the MyMernApp database
-module.exports = mongoose.model("ChickenModel", ChickenSchema);
+module.exports = mongoose.model("chicken", ChickenSchema);

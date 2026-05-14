@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-function Submit({newName, newAge, newBreed, name, age, breed, clickInputHandler}){
+function Submit({newName, newAge, newBreed, clickInputHandler}){
   function newNameSetter (event){
     newName(event.target.value)
   }
@@ -62,7 +62,7 @@ useEffect(() => {
   }
   return (
     <>
-    <Submit newName={newNameListener} newAge={newAgeListener} newBreed={newBreedListener} name={inputName} age={inputAge} breed={inputBreed} clickInputHandler={()=> onClickSubmit()}/>
+    <Submit newName={newNameListener} newAge={newAgeListener} newBreed={newBreedListener} clickInputHandler={()=> onClickSubmit()}/>
     {/* <Display chickenListProp={chickenList}></Display> */}
     <div> {chickenList.map (chicken =>
     <li key={chicken.id}> {chicken.name} {chicken.age} {chicken.breed} </li>
