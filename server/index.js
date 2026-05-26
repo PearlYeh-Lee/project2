@@ -11,12 +11,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-storedChickens=[{
-    id: 0,
-    name: 'Chippy',
-    age: 6,
-    breed: 'Easter Egger'
-  }]
+
+
+  // TODO: create a POST to get new chicken
+
+  //TODO: Add new chicken to DB 
+
+
+
 
 app.get('/api/storedChickens', async (req, res) => {
   console.log("doing a get")
@@ -30,6 +32,18 @@ app.get('/api/storedChickens', async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
+app.post('/api/postChicken'), async(req, res) => {
+  console.log("doing a post")
+  user.save()
+   .then(doc => {
+     console.log(doc)
+   })
+   .catch(err => {
+     console.error(err)
+   })
+
+}
 
 // app.get('/api/storedPigs', async (req, res) => {
 //   try {
