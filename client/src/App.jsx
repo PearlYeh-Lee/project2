@@ -46,11 +46,11 @@ useEffect(() => {
     newChickenAdder(inputName, inputAge, inputBreed)    
   }
   function newChickenAdder(inputName, inputAge, inputBreed){
+    
+
     const currentChickenList = [...chickenList]
-    const newChickenDictionary = {id: currentChickenList.length, name: inputName, age: inputAge, breed: inputBreed};
-    currentChickenList.push(newChickenDictionary)
-    axios.post('http://localhost:5000/api/postChicken', newChickenDictionary).then((response)=>{
-      console.log(response.status, response.data.token);
+    axios.post('http://localhost:5000/api/postChicken',  {id: currentChickenList.length, name: inputName, age: inputAge, breed: inputBreed}).then((response)=>{
+      console.log(response);
     });
     // TODO: Send newly Created chicken to Server using a POST, then check to see if duplicates happen
 

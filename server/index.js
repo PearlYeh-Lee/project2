@@ -18,7 +18,7 @@ app.use(express.json());
   //TODO: Add new chicken to DB 
 
 
-
+// .find = static method (method on a class)
 
 app.get('/api/storedChickens', async (req, res) => {
   console.log("doing a get")
@@ -33,11 +33,10 @@ app.get('/api/storedChickens', async (req, res) => {
   }
 });
 
-app.post('/api/postChicken'), async(req, res) => {
+app.post('/api/postChicken', async(req, res) => {
   console.log("doing a post")
-  let newChicken = new ChickenModel({
-newChickenDictionary
-  })
+  
+  let newChicken = new ChickenModel(req.body)
   newChicken.save()
    .then(doc => {
      console.log(doc)
@@ -46,7 +45,7 @@ newChickenDictionary
      console.error(err)
    })
 
-}
+})
 
 // app.get('/api/storedPigs', async (req, res) => {
 //   try {
