@@ -33,16 +33,12 @@ function App() {
   // To-do: use useEffect and axios to get chickens from server using api/chickens and set chickenList to chickens using setchickenList
 
 useEffect(() => {
-  // const postChicken = async () => {
-  //   const response = await axios.post('http://localhost:5000/api/')
-  // }
   const fetchChickens = async () => {
     // Axios handles the promise and the JSON conversion automatically
     const response = await axios.get('http://localhost:5000/api/storedChickens');
     setChickenList(response.data); 
   };
   fetchChickens();
-  // postChicken();
 }, []);
 
   function onClickSubmit(){

@@ -35,7 +35,10 @@ app.get('/api/storedChickens', async (req, res) => {
 
 app.post('/api/postChicken'), async(req, res) => {
   console.log("doing a post")
-  user.save()
+  let newChicken = new ChickenModel({
+newChickenDictionary
+  })
+  newChicken.save()
    .then(doc => {
      console.log(doc)
    })
