@@ -43,9 +43,10 @@ app.post('/api/postChicken', async(req, res) => {
    })
    .catch(err => {
      console.error(err)
+     res.status(500).json({ error: err.message });
    })
 
-})
+});
 
 // app.get('/api/storedPigs', async (req, res) => {
 //   try {

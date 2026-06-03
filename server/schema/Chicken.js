@@ -5,9 +5,11 @@ const Schema = mongoose.Schema;
 // create a schema
 const ChickenSchema = new Schema({
 	// Simple declaration of datatype that will be used:
-    id: Number,
+	id: 
+	{type: String,
+	required: true, 
+    unique: true },
 	name: String,
-	// You can add specifics to each one too that help with validation, like making something required, or unique
 	age: Number,
     breed: String,
 
